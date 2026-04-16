@@ -10,6 +10,7 @@
         h2 { font-size: 20px; margin-top: 32px; }
         h3 { font-size: 16px; margin-top: 20px; }
         .date { color: #86868b; margin-bottom: 32px; }
+        .callout { background: #fff4e5; border-left: 4px solid #ff9500; padding: 14px 16px; border-radius: 6px; margin: 20px 0; }
         a { color: #0066cc; }
         table { width: 100%; border-collapse: collapse; margin: 16px 0; }
         th, td { border: 1px solid #d2d2d7; padding: 10px 12px; text-align: left; font-size: 14px; }
@@ -22,7 +23,132 @@
     <h1>Udana Privacy Policy</h1>
     <p class="date">Last updated: April 16, 2026</p>
 
-    <p><em>Last Updated: April 16, 2026</em></p><h2>1. Overview</h2><p>This Privacy Policy describes how Udana ("we," "us," or "the app"), developed by Jake Williams, handles information when you use the Udana iOS application. Udana is designed around a privacy-first architecture: the data that matters most to you — audio captured during classes, health metrics, and your practice history — is processed and stored on your device. This policy explains what the app collects, why, and how we keep it protected.</p><p>We do not sell your personal information. We do not use your data for advertising. We do not share your data with third parties for marketing purposes.</p><h2>2. Data Collection Summary</h2><p>The table below summarizes the data types the app handles, consistent with our App Store privacy label declarations.</p><table><tr><th>Data Type</th><th>Purpose</th><th>Linked to Identity</th><th>Used for Tracking</th><th>Notes</th></tr><tr><td>Health &amp; Fitness</td><td>App functionality</td><td>Yes</td><td>No</td><td>Heart rate, calories, and workout data from HealthKit — stored on-device only.</td></tr><tr><td>Fitness &amp; Exercise</td><td>App functionality</td><td>Yes</td><td>No</td><td>Class attendance, workout type, and duration — stored on-device only.</td></tr><tr><td>Audio Data</td><td>App functionality</td><td>No</td><td>No</td><td>Microphone audio processed on-device in real time for song recognition and instructor cue detection. Raw audio is never stored or transmitted.</td></tr><tr><td>Coarse Location</td><td>App functionality</td><td>No</td><td>No</td><td>Used only to match users who attended the same class at the same studio.</td></tr></table><h2>3. On-Device Data</h2><p>Udana is built on Apple frameworks that keep your data local by design. The following processing happens entirely on your iPhone:</p><ul><li>Live audio capture and analysis through AVFoundation and AVAudioEngine.</li><li>Song identification through ShazamKit.</li><li>Speech recognition and instructor cue transcription through the Speech framework.</li><li>Acoustic scene classification through SoundAnalysis.</li><li>Post-session cue extraction and summarization through on-device language models (see Section 7).</li><li>Class history, song timelines, movement sequences, and preferences stored locally with SwiftData in an App Group container shared only between the Udana app and its widget.</li></ul><p>Audio captured during a class is ephemeral. It is analyzed in memory and discarded — the app does not write raw microphone recordings to disk and does not transmit them off the device.</p><h2>4. HealthKit</h2><p>With your permission, Udana reads workout, heart rate, and active energy data from Apple Health to enrich your class recap and trend analytics. Udana may also write workout samples back to Apple Health so your Udana sessions appear alongside your other activity. All HealthKit data remains on your device and in your iCloud Health store (managed by Apple, not by us). Udana does not transmit HealthKit data to any server we control, and HealthKit data is never used for advertising or shared with third parties.</p><p>You can revoke HealthKit access at any time in the iOS Settings app under Privacy &amp; Security &gt; Health &gt; Udana.</p><h2>5. Location</h2><p>With your permission, Udana uses coarse location through CoreLocation to auto-tag the studio or venue where a class takes place and to help match you with other attendees of the same class at the same studio. Location is used only for these features. You can deny or revoke location access at any time in the iOS Settings app; the app will continue to function without venue auto-tagging.</p><h2>6. Music</h2><p>Udana integrates with MusicKit and Apple Music to identify tracks played during class, fetch time-synced lyrics for the Lyrics Subtraction Engine (which subtracts song lyrics from speech transcription to isolate instructor cues), preview 30-second samples, and export class playlists. Your Apple Music account credentials are managed by iOS — Udana never sees your password. You can revoke Media &amp; Apple Music access at any time in the iOS Settings app.</p><h2>7. On-Device AI</h2><p>Udana uses Apple's on-device FoundationModels framework for post-session cue extraction and summarization. These models run locally on your iPhone. Prompts and outputs are not transmitted to us or to any third-party AI provider. No audio, transcripts, or session content leave your device as part of this processing.</p><h2>8. Nearby Discovery</h2><p>If you opt in, Udana uses MultipeerConnectivity to discover other Udana users who are physically nearby — for example, classmates in the same studio. This peer-to-peer discovery happens directly between devices over Bluetooth and local Wi-Fi; no central server is involved. You can disable nearby discovery at any time from within the app.</p><h2>9. Subscriptions</h2><p>Udana offers an optional paid subscription, Udana Pro, with the following plans:</p><ul><li>Udana Pro Monthly — $6.99 per month.</li><li>Udana Pro Annual — $49.99 per year, with a 1-week free trial for new subscribers.</li></ul><p>Subscriptions are sold and managed by Apple through the App Store using your Apple ID. Udana receives only the transaction receipt needed to validate entitlement — we do not see your credit card number, billing address, or other payment details. Refer to Apple's privacy policy for information about how Apple handles payment data.</p><h2>10. Third-Party Services</h2><p>Udana does not bundle third-party analytics SDKs, advertising SDKs, or crash-reporting SDKs beyond those provided by Apple. If you choose to export a class playlist to Spotify or export a workout to Strava, Udana will connect to those services on your behalf using APIs you explicitly authorize. Data shared with those services is governed by their own privacy policies, and you can disconnect those integrations at any time.</p><h2>11. Children's Privacy</h2><p>Udana is not directed to children under 13, and we do not knowingly collect personal information from children under 13. If you believe a child has provided us with personal information, please contact us at info@jakeawilliams.com and we will take appropriate action. This policy is intended to comply with the U.S. Children's Online Privacy Protection Act (COPPA).</p><h2>12. International Users (GDPR / CCPA)</h2><p>If you are located in the European Economic Area, the United Kingdom, or Switzerland, you have rights under the General Data Protection Regulation (GDPR), including the right to access, correct, delete, restrict, or object to processing of personal data, and the right to data portability. Because Udana stores your class and health data on your device, you can exercise most of these rights directly within the app by viewing, editing, or deleting your data.</p><p>If you are a California resident, the California Consumer Privacy Act (CCPA) gives you the right to know what personal information we collect, the right to delete it, and the right not to be discriminated against for exercising these rights. We do not sell personal information as defined by the CCPA.</p><p>To exercise any of these rights, contact us at info@jakeawilliams.com.</p><h2>13. Data Retention and Deletion</h2><p>Because your class history, health data, and preferences live on your device, they persist until you delete them. You can delete individual sessions, clear your entire history, or remove the app. Uninstalling Udana removes the App Group container and all locally stored data. HealthKit data written by Udana can be removed from the Health app at any time.</p><h2>14. Security</h2><p>We rely on the security protections built into iOS: data is stored inside the app's sandbox and App Group container, protected by the device passcode and hardware encryption. Microphone audio is held only in memory during analysis and is not written to persistent storage. Network requests use HTTPS with certificate validation. No system is perfectly secure, but we design Udana to minimize the data that could ever be exposed.</p><h2>15. Changes to This Policy</h2><p>We may update this Privacy Policy from time to time. When we do, we will revise the "Last Updated" date at the top of this page and, for material changes, provide notice inside the app. Your continued use of Udana after changes take effect constitutes acceptance of the updated policy.</p><h2>16. Contact</h2><p>If you have questions or requests about this Privacy Policy or your data, contact us at:</p><p>Jake Williams<br>Email: info@jakeawilliams.com</p>
+    <h2>1. Overview</h2>
+    <p>This Privacy Policy describes how Udana ("we," "us," or "the app"), developed by Jake Williams, handles information when you use the Udana iOS application. Udana is designed around a privacy-first architecture: the data that matters most to you — audio captured during classes, health metrics, and your practice history — is processed and stored on your device. This policy explains what the app collects, why, and how we keep it protected.</p>
+    <p>We do not sell your personal information. We do not use your data for advertising. We do not share your data with third parties for marketing purposes.</p>
+
+    <h2>2. Data Controller</h2>
+    <p>For the purposes of the EU General Data Protection Regulation (GDPR), the UK GDPR, and analogous laws, the data controller is:</p>
+    <p>Jake Williams<br>Denver, Colorado, United States<br>Email: <a href="mailto:info@jakeawilliams.com">info@jakeawilliams.com</a></p>
+
+    <h2>3. Data Collection Summary</h2>
+    <p>The table below summarizes the data types the app handles, consistent with our App Store privacy label declarations.</p>
+    <table>
+        <tr><th>Data Type</th><th>Purpose</th><th>Linked to Identity</th><th>Used for Tracking</th><th>Notes</th></tr>
+        <tr><td>Health &amp; Fitness</td><td>App functionality</td><td>Yes</td><td>No</td><td>Heart rate, calories, and workout data from HealthKit — stored on-device only.</td></tr>
+        <tr><td>Fitness &amp; Exercise</td><td>App functionality</td><td>Yes</td><td>No</td><td>Class attendance, workout type, and duration — stored on-device only.</td></tr>
+        <tr><td>Audio Data</td><td>App functionality</td><td>No</td><td>No</td><td>Microphone audio processed on-device in real time for song recognition and instructor cue detection. Raw audio is never stored or transmitted.</td></tr>
+        <tr><td>Coarse Location</td><td>App functionality</td><td>No</td><td>No</td><td>Used only to match users who attended the same class at the same studio.</td></tr>
+    </table>
+
+    <h2>4. Audio Recording and Consent</h2>
+    <div class="callout">
+        <strong>Please read Section 4 of our <a href="terms-of-service.html">Terms of Service</a> regarding your responsibilities when recording audio, including state-by-state consent rules.</strong>
+    </div>
+    <p>Udana listens to the microphone of your device during active sessions to identify songs playing in class and to transcribe your instructor's cues. Audio is analyzed in memory by Apple frameworks (ShazamKit, Speech, SoundAnalysis) and AVAudioEngine, then discarded. We never write raw microphone audio to disk, and we never transmit it off your device.</p>
+    <p>Although Udana does not store or transmit audio, the act of recording in the presence of other people is regulated by law in many jurisdictions. Certain U.S. states — including California, Florida, Illinois, Massachusetts, Montana, New Hampshire, Pennsylvania, and Washington — require that all parties to a conversation consent to being recorded. You are solely responsible for determining whether your use of Udana is lawful in your location and for obtaining any consent required.</p>
+    <p>iOS displays a system-level microphone indicator (the orange dot in the status bar) whenever Udana is listening. Udana also displays a visible "LISTENING" banner within the app for the duration of every session.</p>
+
+    <h2>5. On-Device Data</h2>
+    <p>Udana is built on Apple frameworks that keep your data local by design. The following processing happens entirely on your iPhone:</p>
+    <ul>
+        <li>Live audio capture and analysis through AVFoundation and AVAudioEngine.</li>
+        <li>Song identification through ShazamKit.</li>
+        <li>Speech recognition and instructor cue transcription through the Speech framework (forced on-device mode).</li>
+        <li>Acoustic scene classification through SoundAnalysis.</li>
+        <li>Post-session cue extraction and summarization through Apple's on-device FoundationModels language models.</li>
+        <li>Class history, song timelines, movement sequences, and preferences stored locally with SwiftData in an App Group container shared only between the Udana app and its widget.</li>
+    </ul>
+    <p>Audio captured during a class is ephemeral. It is analyzed in memory and discarded — the app does not write raw microphone recordings to disk and does not transmit them off the device.</p>
+
+    <h2>6. HealthKit</h2>
+    <p>With your permission, Udana reads workout, heart rate, and active energy data from Apple Health to enrich your class recap and trend analytics. Udana may also write workout samples back to Apple Health so your Udana sessions appear alongside your other activity. All HealthKit data remains on your device and in your iCloud Health store (managed by Apple, not by us). Udana does not transmit HealthKit data to any server we control, and HealthKit data is never used for advertising or shared with third parties.</p>
+    <p>You can revoke HealthKit access at any time in the iOS Settings app under Privacy &amp; Security &gt; Health &gt; Udana.</p>
+
+    <h2>7. Location</h2>
+    <p>With your permission, Udana uses coarse location through CoreLocation to auto-tag the studio or venue where a class takes place and to help match you with other attendees of the same class at the same studio. Location is used only for these features. You can deny or revoke location access at any time in the iOS Settings app; the app will continue to function without venue auto-tagging.</p>
+
+    <h2>8. Music</h2>
+    <p>Udana integrates with MusicKit and Apple Music to identify tracks played during class, fetch time-synced lyrics for the Lyrics Subtraction Engine (which subtracts song lyrics from speech transcription to isolate instructor cues), preview 30-second samples, and export class playlists. Your Apple Music account credentials are managed by iOS — Udana never sees your password. You can revoke Media &amp; Apple Music access at any time in the iOS Settings app.</p>
+
+    <h2>9. On-Device AI</h2>
+    <p>Udana uses Apple's on-device FoundationModels framework for post-session cue extraction and summarization. These models run locally on your iPhone. Prompts and outputs are not transmitted to us or to any third-party AI provider. No audio, transcripts, or session content leave your device as part of this processing.</p>
+
+    <h2>10. Nearby Discovery</h2>
+    <p>If you opt in, Udana uses MultipeerConnectivity to discover other Udana users who are physically nearby — for example, classmates in the same studio. This peer-to-peer discovery happens directly between devices over Bluetooth and local Wi-Fi; no central server is involved. Only your display name and class type are broadcast. You can disable nearby discovery at any time from within the app.</p>
+
+    <h2>11. Subscriptions</h2>
+    <p>Udana offers an optional paid subscription, Udana Pro, with the following plans:</p>
+    <ul>
+        <li>Udana Pro Monthly — $6.99 per month.</li>
+        <li>Udana Pro Annual — $49.99 per year, with a 1-week free trial for new subscribers.</li>
+    </ul>
+    <p>Subscriptions are sold and managed by Apple through the App Store using your Apple ID. Udana receives only the transaction receipt needed to validate entitlement — we do not see your credit card number, billing address, or other payment details. Refer to Apple's privacy policy for information about how Apple handles payment data.</p>
+
+    <h2>12. Third-Party Services</h2>
+    <p>Udana does not bundle third-party analytics SDKs, advertising SDKs, or crash-reporting SDKs beyond those provided by Apple. If you choose to export a class playlist to Spotify or export a workout to Strava, Udana will connect to those services on your behalf using APIs you explicitly authorize. Data shared with those services is governed by their own privacy policies:</p>
+    <ul>
+        <li><a href="https://www.apple.com/legal/privacy/">Apple Privacy Policy</a> — covers ShazamKit, MusicKit, HealthKit, and Speech.</li>
+        <li><a href="https://www.spotify.com/us/legal/privacy-policy/">Spotify Privacy Policy</a> — covers playlist export.</li>
+        <li><a href="https://www.strava.com/legal/privacy">Strava Privacy Policy</a> — covers activity export.</li>
+    </ul>
+    <p>You can disconnect those integrations at any time from within the Udana app.</p>
+
+    <h2>13. Legal Basis for Processing (GDPR)</h2>
+    <p>For users in the European Economic Area, the United Kingdom, or Switzerland, the lawful bases for our processing are:</p>
+    <ul>
+        <li><strong>Consent</strong> (Article 6(1)(a)) — for microphone access, Speech Recognition, Apple Music, Location, HealthKit, and nearby discovery. You grant these through the iOS permission prompts and may withdraw them at any time in Settings.</li>
+        <li><strong>Performance of a contract</strong> (Article 6(1)(b)) — for subscription management and delivering the features you requested.</li>
+        <li><strong>Legitimate interests</strong> (Article 6(1)(f)) — for on-device diagnostics that help us improve the app without identifying individuals.</li>
+    </ul>
+
+    <h2>14. Your Data Subject Rights</h2>
+    <h3>European Economic Area, United Kingdom, Switzerland (GDPR / UK GDPR)</h3>
+    <p>You have the right to:</p>
+    <ul>
+        <li>Access the personal data we hold about you (Article 15).</li>
+        <li>Request rectification of inaccurate data (Article 16).</li>
+        <li>Request erasure of your data (Article 17, "right to be forgotten").</li>
+        <li>Restrict processing (Article 18).</li>
+        <li>Receive your data in a portable format (Article 20).</li>
+        <li>Object to processing based on legitimate interests (Article 21).</li>
+        <li>Lodge a complaint with your local supervisory authority.</li>
+    </ul>
+    <p>Because Udana stores your class and health data on your device, you can exercise most of these rights directly within the app by viewing, editing, or deleting your data. To exercise any right we cannot fulfill on-device, contact us at <a href="mailto:info@jakeawilliams.com">info@jakeawilliams.com</a>.</p>
+
+    <h3>California (CCPA / CPRA)</h3>
+    <p>If you are a California resident, you have the right to:</p>
+    <ul>
+        <li>Know what personal information we collect, use, and disclose about you.</li>
+        <li>Delete personal information we hold about you.</li>
+        <li>Correct inaccurate personal information.</li>
+        <li>Opt out of the sale or sharing of personal information. <strong>We do not sell or share personal information as those terms are defined by the CCPA/CPRA.</strong></li>
+        <li>Limit the use of sensitive personal information. We collect sensitive categories (Health &amp; Fitness data) only for the purposes you enable and do not use them beyond those purposes.</li>
+        <li>Non-discrimination for exercising your privacy rights.</li>
+    </ul>
+    <p>To exercise these rights, contact us at <a href="mailto:info@jakeawilliams.com">info@jakeawilliams.com</a>. We will verify your request by email and respond within 45 days.</p>
+
+    <h3>Other U.S. States</h3>
+    <p>Virginia (VCDPA), Colorado (CPA), Connecticut (CTDPA), Utah (UCPA), and other states with comprehensive privacy laws grant you similar rights of access, deletion, correction, and opt-out of targeted advertising. Contact us using the email above to exercise any of these rights.</p>
+
+    <h2>15. International Data Transfers</h2>
+    <p>Udana processes data on your device, which stays with you wherever you go. Third-party services you optionally connect to (Spotify, Strava, Apple) may transfer data across borders under their own terms. If such transfers occur, they are governed by the standard contractual clauses or adequacy mechanisms adopted by those providers.</p>
+
+    <h2>16. Children's Privacy</h2>
+    <p>Udana is not directed to children under 13, and we do not knowingly collect personal information from children under 13. If you believe a child has provided us with personal information, please contact us at <a href="mailto:info@jakeawilliams.com">info@jakeawilliams.com</a> and we will take appropriate action. This policy is intended to comply with the U.S. Children's Online Privacy Protection Act (COPPA).</p>
+
+    <h2>17. Data Retention and Deletion</h2>
+    <p>Because your class history, health data, and preferences live on your device, they persist until you delete them. You can delete individual sessions, clear your entire history, or remove the app. Uninstalling Udana removes the App Group container and all locally stored data. HealthKit data written by Udana can be removed from the Health app at any time.</p>
+
+    <h2>18. Security</h2>
+    <p>We rely on the security protections built into iOS: data is stored inside the app's sandbox and App Group container, protected by the device passcode and hardware encryption. Microphone audio is held only in memory during analysis and is not written to persistent storage. Network requests use HTTPS with certificate validation. No system is perfectly secure, but we design Udana to minimize the data that could ever be exposed.</p>
+
+    <h2>19. Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time. When we do, we will revise the "Last Updated" date at the top of this page and, for material changes, provide notice inside the app. Your continued use of Udana after changes take effect constitutes acceptance of the updated policy.</p>
+
+    <h2>20. Contact</h2>
+    <p>If you have questions or requests about this Privacy Policy or your data, contact us at:</p>
+    <p>Jake Williams<br>Email: <a href="mailto:info@jakeawilliams.com">info@jakeawilliams.com</a></p>
 
     <p style="margin-top: 48px; text-align: center;"><a href="index.html">Back to Udana</a></p>
 </body>
