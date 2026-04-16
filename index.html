@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Udana — Tap once. Relive every moment.</title>
+    <meta name="description" content="Udana listens to your fitness class and reconstructs it — playlist with timestamps, instructor cues, and the shape of your session. On-device, audio never stored.">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Rounded", "SF Pro Text", system-ui, sans-serif;
+            background: #0D0D0F;
+            color: #EDEDED;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 48px 20px;
+        }
+        .container { max-width: 720px; width: 100%; }
+        header { text-align: center; margin-bottom: 56px; }
+        h1 {
+            font-size: 48px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+        }
+        .tagline {
+            font-size: 22px;
+            color: #FF4D3D;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+        }
+        .hero {
+            font-size: 18px;
+            color: #86868b;
+            margin-bottom: 48px;
+            text-align: center;
+            line-height: 1.7;
+        }
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            margin-bottom: 64px;
+            flex-wrap: wrap;
+        }
+        .stat { text-align: center; }
+        .stat-number {
+            font-size: 36px;
+            font-weight: 700;
+            color: #FF4D3D;
+            font-variant-numeric: tabular-nums;
+        }
+        .stat-label {
+            font-size: 12px;
+            color: #86868b;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-top: 4px;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 64px;
+        }
+        .feature {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 24px;
+        }
+        .feature h3 {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #EDEDED;
+        }
+        .feature p {
+            font-size: 15px;
+            color: #86868b;
+            line-height: 1.6;
+        }
+        .cta {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+        .cta a {
+            display: inline-block;
+            background: #FF4D3D;
+            color: #0D0D0F;
+            padding: 14px 28px;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: transform 0.15s ease;
+        }
+        .cta a:hover { transform: translateY(-1px); }
+        footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 32px;
+            text-align: center;
+            width: 100%;
+        }
+        footer a {
+            color: #86868b;
+            text-decoration: none;
+            margin: 0 16px;
+            font-size: 14px;
+        }
+        footer a:hover { color: #EDEDED; }
+        .copyright {
+            margin-top: 24px;
+            color: #86868b;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Udana</h1>
+            <p class="tagline">Tap once. Relive every moment.</p>
+        </header>
+
+        <p class="hero">Udana is an intelligent workout class companion that listens to the boutique fitness class you just took and hands back the full experience. You get the playlist with timestamps, the cues your instructor shouted over the bridge, and the shape of the session from warmup to cooldown — all reconstructed on-device from audio that's never stored.</p>
+
+        <div class="stats">
+            <div class="stat"><div class="stat-number">0</div><div class="stat-label">seconds of audio stored</div></div>
+            <div class="stat"><div class="stat-number">4</div><div class="stat-label">pillars: capture, experience, community, health</div></div>
+            <div class="stat"><div class="stat-number">100%</div><div class="stat-label">on-device intelligence</div></div>
+        </div>
+
+        <div class="features">
+            <div class="feature"><h3>Class Capture Engine</h3><p>ShazamKit, Speech, and SoundAnalysis run in parallel to recognize songs, transcribe cues, and classify the session as it happens.</p></div>
+            <div class="feature"><h3>Class Experience</h3><p>Review the class after it ends — a timeline, the full playlist with timestamps, the movement sequence, and your workout data.</p></div>
+            <div class="feature"><h3>Instructor Cues, Isolated</h3><p>Apple Music lyrics are subtracted from live speech so you hear your instructor, not the song. FoundationModels polishes the transcript on-device.</p></div>
+            <div class="feature"><h3>Health & Performance</h3><p>HealthKit integration surfaces heart-rate zones and workout trends alongside the class itself, so effort has context.</p></div>
+            <div class="feature"><h3>Community & Identity</h3><p>Instructor profiles, shared class experiences, and a cross-studio social layer that doesn't exist anywhere else.</p></div>
+            <div class="feature"><h3>Private by Design</h3><p>Audio is ephemeral and never permanently stored. Recognition runs on-device across Apple frameworks only — no third-party SDKs.</p></div>
+        </div>
+
+        <div class="cta">
+            <a href="https://apps.apple.com/app/id6762299975">Download on the App Store</a>
+        </div>
+    </div>
+
+    <footer>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-of-service.html">Terms of Service</a>
+        <a href="support.html">Support</a>
+        <div class="copyright">&copy; 2026 Jake Williams. All rights reserved.</div>
+    </footer>
+</body>
+</html>
