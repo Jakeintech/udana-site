@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A class shared with you — Udana</title>
+    <meta name="description" content="Your teacher shared a class with you: the soundtrack, the sequence and the intention behind it. Keep it in Udana, free.">
+    <meta name="robots" content="noindex">
+    <meta name="referrer" content="no-referrer">
+    <meta name="theme-color" content="#0D0D0F">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --bg: #0D0D0F;
+            --surface: rgba(255, 255, 255, 0.04);
+            --line: rgba(255, 255, 255, 0.09);
+            --text: #EDEDED;
+            --muted: #9A9AA0;
+            --saffron: #E8A435;
+            --amber: #FFB340;
+        }
+        html { -webkit-text-size-adjust: 100%; }
+        body {
+            font-family: ui-rounded, -apple-system, BlinkMacSystemFont, "SF Pro Rounded", "SF Pro Text", system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.55;
+            min-height: 100vh;
+            padding: 40px 16px 120px;
+        }
+        .container { max-width: 640px; margin: 0 auto; }
+        .brand {
+            display: inline-block;
+            color: var(--saffron);
+            font-weight: 700;
+            font-size: 17px;
+            letter-spacing: 0.01em;
+            text-decoration: none;
+            margin-bottom: 40px;
+        }
+        .eyebrow {
+            color: var(--saffron);
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        h1 {
+            font-size: clamp(32px, 8vw, 44px);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.12;
+            overflow-wrap: anywhere;
+        }
+        .facts {
+            color: var(--muted);
+            font-size: 16px;
+            margin-top: 12px;
+        }
+        .intention {
+            margin-top: 28px;
+            padding-left: 18px;
+            border-left: 3px solid var(--saffron);
+            font-size: 20px;
+            line-height: 1.5;
+            overflow-wrap: anywhere;
+            white-space: pre-line;
+        }
+        section { margin-top: 44px; }
+        h2 {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 14px;
+        }
+        h2 .count { font-variant-numeric: tabular-nums; text-transform: none; letter-spacing: 0; font-weight: 400; }
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            overflow: hidden;
+        }
+        ol, ul { list-style: none; }
+        .row {
+            display: flex;
+            align-items: baseline;
+            gap: 14px;
+            padding: 13px 16px;
+            border-top: 1px solid var(--line);
+        }
+        .row:first-child { border-top: 0; }
+        .row .index {
+            flex: 0 0 22px;
+            color: var(--muted);
+            font-size: 13px;
+            font-variant-numeric: tabular-nums;
+            font-family: ui-monospace, "SF Mono", Menlo, monospace;
+        }
+        .row .main { flex: 1 1 auto; min-width: 0; overflow-wrap: anywhere; }
+        .row .title { font-size: 16px; font-weight: 600; }
+        .row .sub { font-size: 14px; color: var(--muted); }
+        .row .cue { font-size: 14px; color: var(--text); opacity: 0.85; font-style: italic; margin-top: 2px; }
+        .row .side {
+            flex: 0 0 auto;
+            color: var(--muted);
+            font-size: 13px;
+            font-variant-numeric: tabular-nums;
+            font-family: ui-monospace, "SF Mono", Menlo, monospace;
+            white-space: nowrap;
+        }
+        .songs .index { color: var(--amber); }
+        .songs a.title { color: var(--text); text-decoration: none; }
+        .songs a.title:hover, .songs a.title:focus-visible { color: var(--amber); text-decoration: underline; }
+        .phase {
+            padding: 16px 16px 6px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--saffron);
+            border-top: 1px solid var(--line);
+        }
+        .phase:first-child { border-top: 0; }
+        .phase + .row { border-top: 0; }
+        .reading {
+            font-size: 17px;
+            line-height: 1.7;
+            white-space: pre-line;
+            overflow-wrap: anywhere;
+            color: var(--text);
+            opacity: 0.92;
+        }
+        .note { color: var(--muted); font-size: 14px; margin-top: 28px; }
+        .message { margin-top: 24px; font-size: 18px; color: var(--muted); }
+        .bar {
+            position: fixed;
+            left: 0; right: 0; bottom: 0;
+            padding: 14px 16px calc(14px + env(safe-area-inset-bottom));
+            background: linear-gradient(to bottom, rgba(13, 13, 15, 0), rgba(13, 13, 15, 0.94) 38%);
+        }
+        .bar-inner {
+            max-width: 640px;
+            margin: 0 auto;
+            display: flex;
+            gap: 10px;
+        }
+        .button {
+            flex: 2 1 0;
+            display: inline-block;
+            white-space: nowrap;
+            text-align: center;
+            padding: 14px 14px;
+            border-radius: 999px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .button.primary { background: var(--saffron); color: #17120A; }
+        .button.quiet { flex: 1 1 0; border: 1px solid var(--line); color: var(--text); background: rgba(13, 13, 15, 0.8); }
+        .button:focus-visible, a:focus-visible { outline: 2px solid var(--saffron); outline-offset: 3px; }
+        footer { margin-top: 56px; color: var(--muted); font-size: 13px; }
+        footer a { color: var(--muted); margin-right: 16px; }
+        @media (max-width: 359px) {
+            .bar-inner { flex-wrap: wrap; }
+            .button { flex-basis: 100%; }
+        }
+        [hidden] { display: none !important; }
+        @media (prefers-reduced-motion: no-preference) {
+            #class { animation: rise 0.35s ease-out both; }
+            @keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a class="brand" href="index.html">Udana</a>
+
+        <main>
+            <div id="loading" class="message" aria-live="polite">Opening your class…</div>
+
+            <article id="class" hidden>
+                <p class="eyebrow" id="eyebrow">A class shared with you</p>
+                <h1 id="title"></h1>
+                <p class="facts" id="facts"></p>
+                <p class="intention" id="intention" hidden></p>
+
+                <section id="songs-section" hidden>
+                    <h2>The soundtrack <span class="count" id="songs-count"></span></h2>
+                    <ol class="card songs" id="songs"></ol>
+                </section>
+
+                <section id="sequence-section" hidden>
+                    <h2>The sequence <span class="count" id="sequence-count"></span></h2>
+                    <ol class="card" id="sequence"></ol>
+                </section>
+
+                <section id="reading-section" hidden>
+                    <h2>The reading</h2>
+                    <p class="reading" id="reading"></p>
+                </section>
+
+                <p class="note">Open this in Udana and it settles into your memory of that class, beside the songs and how your body moved. Always free for students.</p>
+            </article>
+
+            <div id="fallback" hidden>
+                <p class="eyebrow">A class shared with you</p>
+                <h1 id="fallback-title">Your teacher shared a class</h1>
+                <p class="message" id="fallback-text"></p>
+            </div>
+        </main>
+
+        <footer>
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="support.html">Support</a>
+            <p id="travels" style="margin-top: 10px;" hidden>This class travels inside the link itself. Nothing about it is kept on our servers.</p>
+        </footer>
+    </div>
+
+    <div class="bar" id="bar" hidden>
+        <div class="bar-inner">
+            <a class="button primary" id="open" href="#">Keep this class in Udana</a>
+            <a class="button quiet" id="store" href="https://apps.apple.com/app/id6762299975">Get Udana</a>
+        </div>
+    </div>
+
+    <script>
+    (function () {
+        'use strict';
+
+        // Mirrors ClassShareCodec in the app: compact JSON, raw DEFLATE, base64url.
+        var MAX_PAYLOAD_CHARACTERS = 24000;
+        var MAX_DECODED_BYTES = 512000;
+        var CURRENT_VERSION = 1;
+        var CODE_PATTERN = /^[abcdefghjkmnpqrstuvwxyz23456789]{10}$/;
+
+        var PHASES = {
+            centering: 'Centering', warmUp: 'Warm-up', sunSalutations: 'Sun salutations',
+            standing: 'Standing', peak: 'Peak', coolDown: 'Cool-down', savasana: 'Savasana'
+        };
+        var STYLES = {
+            vinyasa: 'Vinyasa', hatha: 'Hatha', ashtanga: 'Ashtanga', yin: 'Yin', hot26: 'Hot 26',
+            power: 'Power', sculpt: 'Sculpt', restorative: 'Restorative', kundalini: 'Kundalini',
+            prenatal: 'Prenatal', aerial: 'Aerial', iyengar: 'Iyengar', rocket: 'Rocket'
+        };
+        var THEMES = {
+            surrender: 'Surrender', strength: 'Strength', grounding: 'Grounding', opening: 'Opening',
+            balance: 'Balance', presence: 'Presence', gratitude: 'Gratitude', transition: 'Transition',
+            grief: 'Grief', joy: 'Joy', selfCompassion: 'Self-compassion', courage: 'Courage',
+            devotion: 'Devotion', intentionSetting: 'Setting an intention', community: 'Community',
+            embodiment: 'Embodiment'
+        };
+
+        function $(id) { return document.getElementById(id); }
+        function show(id) { $(id).hidden = false; }
+        function el(tag, className, text) {
+            var node = document.createElement(tag);
+            if (className) { node.className = className; }
+            if (text !== undefined) { node.textContent = text; }
+            return node;
+        }
+
+        function text(value, limit) {
+            if (typeof value !== 'string') { return ''; }
+            var trimmed = value.trim();
+            return trimmed.length > limit ? trimmed.slice(0, limit) : trimmed;
+        }
+        function whole(value, low, high, fallback) {
+            var number = Math.round(Number(value));
+            if (!isFinite(number)) { return fallback; }
+            return Math.min(high, Math.max(low, number));
+        }
+
+        function bytesFromBase64URL(payload) {
+            if (!/^[A-Za-z0-9_-]+$/.test(payload) || payload.length % 4 === 1) { return null; }
+            var base64 = payload.replace(/-/g, '+').replace(/_/g, '/');
+            while (base64.length % 4) { base64 += '='; }
+            try {
+                var binary = atob(base64);
+                var bytes = new Uint8Array(binary.length);
+                for (var i = 0; i < binary.length; i++) { bytes[i] = binary.charCodeAt(i); }
+                return bytes;
+            } catch (error) {
+                return null;
+            }
+        }
+
+        async function inflate(bytes) {
+            var reader = new Blob([bytes]).stream()
+                .pipeThrough(new DecompressionStream('deflate-raw'))
+                .getReader();
+            var chunks = [];
+            var total = 0;
+            for (;;) {
+                var step = await reader.read();
+                if (step.done) { break; }
+                total += step.value.byteLength;
+                if (total > MAX_DECODED_BYTES) {
+                    await reader.cancel();
+                    throw new Error('too large');
+                }
+                chunks.push(step.value);
+            }
+            var joined = new Uint8Array(total);
+            var offset = 0;
+            chunks.forEach(function (chunk) { joined.set(chunk, offset); offset += chunk.byteLength; });
+            return new TextDecoder('utf-8', { fatal: true }).decode(joined);
+        }
+
+        // The link came from outside, so nothing in it is trusted: every field is
+        // type-checked and clamped the way SharedClass.sanitized() does in the app.
+        function sanitize(raw) {
+            if (!raw || typeof raw !== 'object' || Array.isArray(raw)) { throw new Error('malformed'); }
+            var poses = Array.isArray(raw.p) ? raw.p.slice(0, 300) : [];
+            var songs = Array.isArray(raw.s) ? raw.s.slice(0, 100) : [];
+            return {
+                version: whole(raw.v, 0, 1000000, 1),
+                title: text(raw.t, 120),
+                teacher: text(raw.by, 80),
+                style: text(raw.st, 40),
+                minutes: whole(raw.m, 5, 300, 60),
+                theme: text(raw.th, 40),
+                intention: text(raw.in, 600),
+                reading: text(raw.rd, 4000),
+                poses: poses.filter(function (p) { return p && typeof p === 'object'; }).map(function (p) {
+                    return {
+                        id: text(p.i, 80),
+                        name: text(p.n, 80),
+                        phase: typeof p.p === 'string' && PHASES[p.p] ? p.p : null,
+                        breaths: p.b === undefined || p.b === null ? null : whole(p.b, 1, 120, 5),
+                        seconds: p.s === undefined || p.s === null ? null : whole(p.s, 0, 3600, 0),
+                        sided: p.d === true,
+                        rounds: whole(p.r, 1, 30, 1),
+                        cue: text(p.c, 400)
+                    };
+                }),
+                songs: songs.filter(function (s) { return s && typeof s === 'object'; }).map(function (s) {
+                    var id = text(s.m, 40);
+                    return {
+                        title: text(s.t, 160),
+                        artist: text(s.a, 160),
+                        seconds: whole(s.s, 0, 7200, 0),
+                        appleMusicID: /^[0-9]{1,20}$/.test(id) ? id : ''
+                    };
+                })
+            };
+        }
+
+        function words(camel) {
+            var spaced = camel.replace(/([a-z])([A-Z0-9])/g, '$1 $2').toLowerCase();
+            return spaced.charAt(0).toUpperCase() + spaced.slice(1);
+        }
+        function poseName(pose) {
+            if (pose.name) { return pose.name; }
+            var slug = pose.id.replace(/^pose\./, '').replace(/[^a-z0-9-]/gi, '');
+            if (!slug) { return 'Pose'; }
+            return slug.split('-').filter(Boolean).map(function (part) {
+                return part.charAt(0).toUpperCase() + part.slice(1);
+            }).join(' ');
+        }
+        function clock(seconds) {
+            var minutes = Math.floor(seconds / 60);
+            var rest = seconds % 60;
+            return minutes + ':' + (rest < 10 ? '0' : '') + rest;
+        }
+        function hold(pose) {
+            var parts = [];
+            if (pose.seconds !== null && pose.seconds > 0) {
+                parts.push(pose.seconds >= 60
+                    ? (pose.seconds % 60 === 0 ? (pose.seconds / 60) + ' min' : clock(pose.seconds))
+                    : pose.seconds + ' sec');
+            } else if (pose.breaths !== null) {
+                parts.push(pose.breaths + (pose.breaths === 1 ? ' breath' : ' breaths'));
+            }
+            if (pose.rounds > 1) { parts.push('× ' + pose.rounds); }
+            return parts.join(' ');
+        }
+
+        function render(shared, payload) {
+            var title = shared.title || 'A class to remember';
+            document.title = title + (shared.teacher ? ' with ' + shared.teacher : '') + ' — Udana';
+            $('eyebrow').textContent = shared.teacher ? 'A class from ' + shared.teacher : 'A class shared with you';
+            $('title').textContent = title;
+
+            var facts = [];
+            if (shared.style && shared.style !== 'unknownYoga') { facts.push(STYLES[shared.style] || words(shared.style)); }
+            facts.push(shared.minutes + ' minutes');
+            if (shared.theme) { facts.push('Theme: ' + (THEMES[shared.theme] || words(shared.theme))); }
+            $('facts').textContent = facts.join(' · ');
+
+            if (shared.intention) {
+                $('intention').textContent = shared.intention;
+                show('intention');
+            }
+
+            if (shared.songs.length) {
+                var list = $('songs');
+                var musicSeconds = 0;
+                shared.songs.forEach(function (song, index) {
+                    musicSeconds += song.seconds;
+                    var row = el('li', 'row');
+                    row.appendChild(el('span', 'index', String(index + 1)));
+                    var main = el('div', 'main');
+                    var name = song.title || 'Untitled';
+                    if (song.appleMusicID) {
+                        var link = el('a', 'title', name);
+                        link.href = 'https://music.apple.com/song/' + song.appleMusicID;
+                        link.rel = 'noopener noreferrer';
+                        main.appendChild(link);
+                    } else {
+                        main.appendChild(el('div', 'title', name));
+                    }
+                    if (song.artist) { main.appendChild(el('div', 'sub', song.artist)); }
+                    row.appendChild(main);
+                    if (song.seconds > 0) { row.appendChild(el('span', 'side', clock(song.seconds))); }
+                    list.appendChild(row);
+                });
+                var count = shared.songs.length + (shared.songs.length === 1 ? ' song' : ' songs');
+                if (musicSeconds >= 60) { count += ', ' + Math.round(musicSeconds / 60) + ' min'; }
+                $('songs-count').textContent = '· ' + count;
+                show('songs-section');
+            }
+
+            if (shared.poses.length) {
+                var sequence = $('sequence');
+                var lastPhase;
+                shared.poses.forEach(function (pose) {
+                    if (pose.phase !== lastPhase && pose.phase) {
+                        sequence.appendChild(el('li', 'phase', PHASES[pose.phase]));
+                    }
+                    lastPhase = pose.phase;
+                    var row = el('li', 'row');
+                    var main = el('div', 'main');
+                    main.appendChild(el('div', 'title', poseName(pose)));
+                    if (pose.sided) { main.appendChild(el('div', 'sub', 'Both sides')); }
+                    if (pose.cue) { main.appendChild(el('div', 'cue', pose.cue)); }
+                    row.appendChild(main);
+                    var length = hold(pose);
+                    if (length) { row.appendChild(el('span', 'side', length)); }
+                    sequence.appendChild(row);
+                });
+                $('sequence-count').textContent = '· ' + shared.poses.length + (shared.poses.length === 1 ? ' pose' : ' poses');
+                show('sequence-section');
+            }
+
+            if (shared.reading) {
+                $('reading').textContent = shared.reading;
+                show('reading-section');
+            }
+
+            $('open').href = 'udana://class#c=' + payload;
+            $('loading').hidden = true;
+            show('class');
+            show('travels');
+            show('bar');
+        }
+
+        function fallback(message, appLink, heading) {
+            $('loading').hidden = true;
+            if (heading) { $('fallback-title').textContent = heading; }
+            $('fallback-text').textContent = message;
+            show('fallback');
+            if (appLink) {
+                $('open').href = appLink;
+                $('open').textContent = 'Open in Udana';
+            } else {
+                $('open').hidden = true;
+            }
+            show('bar');
+        }
+
+        async function start() {
+            var params = new URLSearchParams(window.location.search);
+            var fragment = window.location.hash.replace(/^#/, '');
+            var payload = fragment.indexOf('c=') === 0 ? fragment.slice(2) : (params.get('c') || '');
+            var code = (params.get('id') || '').toLowerCase();
+
+            if (!payload) {
+                if (CODE_PATTERN.test(code)) {
+                    fallback('Open it in Udana to see the soundtrack, the sequence and the intention behind it. It settles into your memory of that class, free.',
+                        'udana://class?id=' + code);
+                } else {
+                    fallback('This link is missing its class. Ask your teacher to share it again.', null, 'We could not find that class');
+                }
+                return;
+            }
+
+            var appLink = 'udana://class#c=' + payload;
+            if (payload.length > MAX_PAYLOAD_CHARACTERS) {
+                fallback('This link is not a class we can open. Ask your teacher to share it again.', null, 'We could not open that class');
+                return;
+            }
+            var bytes = bytesFromBase64URL(payload);
+            if (!bytes || !bytes.length) {
+                fallback('This link looks incomplete. Ask your teacher to share it again.', null, 'We could not open that class');
+                return;
+            }
+            if (typeof DecompressionStream === 'undefined') {
+                fallback('Open it in Udana to see the soundtrack, the sequence and the intention behind it.', appLink);
+                return;
+            }
+            try {
+                var shared = sanitize(JSON.parse(await inflate(bytes)));
+                if (shared.version > CURRENT_VERSION) {
+                    fallback('This class was shared from a newer Udana. Open it in the app to see all of it.', appLink);
+                    return;
+                }
+                render(shared, payload);
+            } catch (error) {
+                fallback('This link looks incomplete. Ask your teacher to share it again.', null, 'We could not open that class');
+            }
+        }
+
+        start();
+        window.addEventListener('hashchange', function () { window.location.reload(); });
+    })();
+    </script>
+</body>
+</html>
