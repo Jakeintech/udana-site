@@ -1,0 +1,28 @@
+:root { --bg:#131216; --surface:rgba(255,255,255,0.045); --border:rgba(255,255,255,0.1); --text:#F0EEEB; --muted:#A09EA6; --accent:#E8A435; }
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.65; margin: 0; }
+.page { max-width: 720px; margin: 0 auto; padding: 0 20px 64px; }
+.topnav { display: flex; align-items: center; justify-content: space-between; padding: 20px 0 28px; }
+.topnav .brand { display: flex; align-items: center; gap: 10px; font: 700 19px ui-rounded, "SF Pro Rounded", system-ui, sans-serif; color: var(--text); text-decoration: none; }
+.topnav .brand img { width: 30px; height: 30px; border-radius: 7px; }
+.topnav a.get { color: var(--accent); text-decoration: none; font-weight: 600; font-size: 15px; }
+h1, h2, h3 { font-family: ui-rounded, "SF Pro Rounded", -apple-system, system-ui, sans-serif; letter-spacing: -0.01em; line-height: 1.25; }
+h1 { font-size: 34px; margin: 8px 0 8px; }
+h2 { font-size: 22px; margin-top: 36px; }
+h3 { font-size: 17px; margin-top: 22px; }
+p, li, td { color: #D6D4D9; }
+.subtitle, .date { color: var(--muted); margin-bottom: 32px; }
+a { color: var(--accent); }
+ul { padding-left: 24px; }
+li { margin-bottom: 6px; }
+.faq { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 18px 20px; margin-bottom: 12px; }
+.faq h3 { margin-top: 0; }
+.faq p { margin-bottom: 0; }
+.callout { background: rgba(232,164,53,0.08); border-left: 4px solid var(--accent); padding: 14px 16px; border-radius: 8px; margin: 20px 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; display: block; overflow-x: auto; }
+th, td { border: 1px solid var(--border); padding: 10px 12px; text-align: left; font-size: 14px; vertical-align: top; }
+th { background: var(--surface); font-weight: 600; color: var(--text); }
+.sitefoot { border-top: 1px solid var(--border); margin-top: 48px; padding-top: 24px; color: var(--muted); font-size: 14px; display: flex; flex-wrap: wrap; gap: 18px; justify-content: space-between; }
+.sitefoot a { color: var(--muted); text-decoration: none; margin-right: 18px; }
+.sitefoot a:hover { color: var(--text); }
