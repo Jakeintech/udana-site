@@ -2,157 +2,268 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Udāna — The memory of every class you take</title>
-    <meta name="description" content="Udāna is the memory of every class you take: the soundtrack of your practice, the theme your teacher wove through class, and how your body moved. Private by design, kept on your iPhone.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Udāna: Remember every class you take | Yoga class memory for iPhone</title>
+    <meta name="description" content="Tap Start when class begins. Udāna keeps every song, the words your teacher said and your heart rate, then builds a page for every teacher. Free for iPhone, iPad and Apple Watch.">
+    <link rel="canonical" href="https://jakeintech.github.io/udana-site/">
+    <meta name="theme-color" content="#131216">
+    <meta name="color-scheme" content="dark">
+
+    <!-- Smart App Banner (Safari on iOS shows it once the app is live) -->
+    <meta name="apple-itunes-app" content="app-id=6762299975">
+
+    <!-- Open Graph / social -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Udāna">
+    <meta property="og:title" content="Udāna: Remember every class you take">
+    <meta property="og:description" content="Every song, your teacher's words, every heartbeat. Kept on your iPhone.">
+    <meta property="og:url" content="https://jakeintech.github.io/udana-site/">
+    <meta property="og:image" content="https://jakeintech.github.io/udana-site/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Udāna class review showing a teacher's quote and the class playlist">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+    <link rel="preload" as="image" href="assets/review.webp" type="image/webp">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Udāna",
+      "operatingSystem": "iOS",
+      "applicationCategory": "HealthApplication",
+      "description": "Remember every class you take: every song, the words your teacher said, and how your body moved.",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "url": "https://apps.apple.com/app/id6762299975"
+    }
+    </script>
+
     <style>
+        :root {
+            --bg: #131216;
+            --surface: rgba(255, 255, 255, 0.045);
+            --border: rgba(255, 255, 255, 0.09);
+            --text: #F0EEEB;
+            --muted: #A09EA6;
+            --accent: #E8A435;
+            --accent-ink: #1A1408;
+            --radius: 20px;
+        }
         * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { -webkit-text-size-adjust: 100%; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Rounded", "SF Pro Text", system-ui, sans-serif;
-            background: #0D0D0F;
-            color: #EDEDED;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
             line-height: 1.6;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 48px 20px;
         }
-        .container { max-width: 720px; width: 100%; }
-        header { text-align: center; margin-bottom: 56px; }
-        h1 {
-            font-size: 48px;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            margin-bottom: 12px;
-        }
-        .tagline {
-            font-size: 22px;
-            color: #E8A435;
-            font-weight: 500;
-            letter-spacing: -0.01em;
-        }
+        h1, h2, h3, .brand { font-family: ui-rounded, "SF Pro Rounded", -apple-system, system-ui, sans-serif; }
+        a { color: var(--accent); }
+        .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+
+        /* Nav */
+        nav { display: flex; align-items: center; justify-content: space-between; padding: 20px 0; }
+        .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 20px; color: var(--text); text-decoration: none; }
+        .brand img { width: 32px; height: 32px; border-radius: 8px; }
+        nav .links a { color: var(--muted); text-decoration: none; font-size: 15px; margin-left: 20px; }
+        nav .links a:hover { color: var(--text); }
+
+        /* Hero */
         .hero {
-            font-size: 18px;
-            color: #86868b;
-            margin-bottom: 48px;
-            text-align: center;
-            line-height: 1.7;
+            display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center;
+            padding: 40px 0 72px;
         }
-        .stats {
-            display: flex;
-            justify-content: center;
-            gap: 48px;
-            margin-bottom: 64px;
-            flex-wrap: wrap;
-        }
-        .stat { text-align: center; }
-        .stat-number {
-            font-size: 36px;
-            font-weight: 700;
-            color: #E8A435;
-            font-variant-numeric: tabular-nums;
-        }
-        .stat-label {
-            font-size: 12px;
-            color: #86868b;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-top: 4px;
-        }
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-            margin-bottom: 64px;
-        }
-        .feature {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 16px;
-            padding: 24px;
-        }
-        .feature h3 {
-            font-size: 17px;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: #EDEDED;
-        }
-        .feature p {
-            font-size: 15px;
-            color: #86868b;
-            line-height: 1.6;
-        }
-        .cta {
-            text-align: center;
-            margin-bottom: 56px;
-        }
-        .cta a {
-            display: inline-block;
-            background: #E8A435;
-            color: #0D0D0F;
-            padding: 14px 28px;
-            border-radius: 999px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 16px;
+        .eyebrow { color: var(--accent); font-weight: 600; font-size: 15px; letter-spacing: 0.02em; margin-bottom: 14px; }
+        .hero h1 { font-size: clamp(40px, 6vw, 64px); line-height: 1.05; letter-spacing: -0.025em; margin-bottom: 20px; }
+        .hero p.lede { font-size: 19px; color: var(--muted); max-width: 34em; margin-bottom: 28px; }
+        .appstore {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: var(--text); color: #000; text-decoration: none;
+            padding: 12px 22px 12px 18px; border-radius: 14px; font-weight: 600; font-size: 17px;
             transition: transform 0.15s ease;
         }
-        .cta a:hover { transform: translateY(-1px); }
-        footer {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 32px;
-            text-align: center;
-            width: 100%;
+        .appstore:hover { transform: translateY(-1px); }
+        .appstore svg { width: 24px; height: 24px; }
+        .appstore small { display: block; font-size: 11px; font-weight: 500; line-height: 1.1; }
+        .appstore span { line-height: 1.1; }
+        .fine { color: var(--muted); font-size: 14px; margin-top: 14px; }
+
+        .phone {
+            justify-self: center; width: min(320px, 80vw); aspect-ratio: 1320 / 2868;
+            border-radius: 44px; overflow: hidden; border: 1px solid var(--border);
+            box-shadow: 0 30px 80px rgba(232, 164, 53, 0.12), 0 10px 30px rgba(0,0,0,0.5);
+            background: #000;
         }
-        footer a {
-            color: #86868b;
-            text-decoration: none;
-            margin: 0 16px;
-            font-size: 14px;
+        .phone img { width: 100%; height: 100%; display: block; object-fit: cover; }
+
+        /* Benefits */
+        .benefit {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center;
+            padding: 56px 0; border-top: 1px solid var(--border);
         }
-        footer a:hover { color: #EDEDED; }
-        .copyright {
-            margin-top: 24px;
-            color: #86868b;
-            font-size: 13px;
+        .benefit:nth-of-type(even) .copy { order: 2; }
+        .benefit h2 { font-size: clamp(28px, 4vw, 40px); line-height: 1.12; letter-spacing: -0.02em; margin-bottom: 14px; }
+        .benefit p { color: var(--muted); font-size: 18px; max-width: 30em; }
+        .benefit ul { list-style: none; margin-top: 16px; color: var(--muted); }
+        .benefit li { padding-left: 22px; position: relative; margin-bottom: 6px; }
+        .benefit li::before { content: ""; position: absolute; left: 4px; top: 0.7em; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+        .benefit .phone { width: min(280px, 72vw); }
+
+        /* Also */
+        .also { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding: 56px 0; border-top: 1px solid var(--border); }
+        .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; }
+        .card h3 { font-size: 17px; margin-bottom: 6px; }
+        .card p { color: var(--muted); font-size: 15px; }
+
+        /* Pricing */
+        .pricing { padding: 56px 0; border-top: 1px solid var(--border); text-align: center; }
+        .pricing h2 { font-size: clamp(28px, 4vw, 40px); letter-spacing: -0.02em; margin-bottom: 12px; }
+        .pricing p { color: var(--muted); font-size: 18px; max-width: 36em; margin: 0 auto 8px; }
+
+        /* FAQ */
+        .faq { padding: 56px 0; border-top: 1px solid var(--border); max-width: 760px; margin: 0 auto; }
+        .faq h2 { font-size: clamp(28px, 4vw, 40px); letter-spacing: -0.02em; margin-bottom: 20px; text-align: center; }
+        details { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 18px 20px; margin-bottom: 10px; }
+        summary { cursor: pointer; font-weight: 600; font-size: 17px; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+        summary::-webkit-details-marker { display: none; }
+        summary::after { content: "+"; color: var(--accent); font-weight: 400; font-size: 22px; line-height: 1; }
+        details[open] summary::after { content: "–"; }
+        details p { color: var(--muted); margin-top: 10px; }
+
+        .final { text-align: center; padding: 64px 0 80px; border-top: 1px solid var(--border); }
+        .final h2 { font-size: clamp(30px, 5vw, 48px); letter-spacing: -0.02em; margin-bottom: 22px; }
+
+        footer { border-top: 1px solid var(--border); padding: 32px 0 48px; color: var(--muted); font-size: 14px; }
+        footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; }
+        footer a { color: var(--muted); text-decoration: none; margin-right: 20px; }
+        footer a:hover { color: var(--text); }
+
+        @media (max-width: 800px) {
+            nav .links a:not(.keep) { display: none; }
+            .hero, .benefit { grid-template-columns: 1fr; gap: 32px; text-align: left; }
+            .hero { padding-top: 16px; }
+            .benefit:nth-of-type(even) .copy { order: 0; }
+            .also { grid-template-columns: 1fr; }
         }
+        @media (prefers-reduced-motion: reduce) { .appstore { transition: none; } }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Udāna</h1>
-            <p class="tagline">The memory of every class you take.</p>
+    <div class="wrap">
+        <nav>
+            <a class="brand" href="./"><img src="assets/icon.png" alt="" width="32" height="32">Udāna</a>
+            <div class="links">
+                <a href="#how">How it works</a>
+                <a href="#faq">FAQ</a>
+                <a class="keep" href="support.html">Support</a>
+            </div>
+        </nav>
+
+        <header class="hero">
+            <div>
+                <p class="eyebrow">For yoga and studio classes</p>
+                <h1>Remember every class you take.</h1>
+                <p class="lede">Tap Start when class begins and put your phone away. Afterwards you'll have every song in order, the words your teacher said, and how your body moved from the first breath to final rest.</p>
+                <a class="appstore" href="https://apps.apple.com/app/id6762299975" aria-label="Download Udāna on the App Store">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.37 12.6c-.02-2.2 1.8-3.26 1.88-3.31-1.03-1.5-2.62-1.7-3.18-1.73-1.35-.14-2.64.8-3.32.8-.69 0-1.74-.78-2.86-.76-1.47.02-2.83.86-3.59 2.17-1.53 2.65-.39 6.58 1.1 8.73.73 1.05 1.6 2.23 2.73 2.19 1.1-.04 1.51-.71 2.84-.71 1.32 0 1.7.71 2.86.69 1.18-.02 1.93-1.07 2.65-2.13.84-1.22 1.18-2.4 1.2-2.46-.03-.01-2.3-.88-2.31-3.48zM14.2 6.13c.6-.73 1.01-1.75.9-2.76-.87.04-1.92.58-2.54 1.31-.56.65-1.05 1.68-.92 2.67.97.08 1.96-.49 2.56-1.22z"/></svg>
+                    <span><small>Download on the</small>App Store</span>
+                </a>
+                <p class="fine">Free for iPhone and iPad, with an Apple Watch app. 3 classes a month free.</p>
+            </div>
+            <div class="phone"><img src="assets/review.webp" width="600" height="1304" alt="A class review in Udāna: the class stats, a quote from the teacher, and the songs in the order they played"></div>
         </header>
-
-        <p class="hero">When class begins, tap Start and put your phone away. Afterwards you'll have what you'd otherwise forget: every song in order, the theme your teacher wove through class, the lines worth keeping, and how your body moved from the first breath to final rest. Class by class, it becomes the story of your practice.</p>
-
-        <div class="stats">
-            <div class="stat"><div class="stat-number">1</div><div class="stat-label">tap to start a class</div></div>
-            <div class="stat"><div class="stat-number">0</div><div class="stat-label">seconds of sound saved</div></div>
-            <div class="stat"><div class="stat-number">0</div><div class="stat-label">accounts or ads</div></div>
-        </div>
-
-        <div class="features">
-            <div class="feature"><h3>The soundtrack of your practice</h3><p>Every song, in the order it played, ready to save to Apple Music or Spotify. Over time, every song that carried you through class, gathered in one place.</p></div>
-            <div class="feature"><h3>The words that stayed with you</h3><p>The theme your teacher wove through class and the lines worth keeping, with song lyrics left out so you hold onto what your teacher said.</p></div>
-            <div class="feature"><h3>The teachers you return to</h3><p>A page for each teacher: the songs they love, the themes and phrases they come back to, and every class you've shared.</p></div>
-            <div class="feature"><h3>Every heartbeat</h3><p>Heart rate and recovery from Apple Watch alongside the class, and a monthly look at who you practised with and the music that moved you.</p></div>
-            <div class="feature"><h3>Share the class</h3><p>Turn any class into a card, with a photo from the studio if you like, and share it to your Instagram Story or anywhere else.</p></div>
-            <div class="feature"><h3>Private by design</h3><p>During class, sound is understood on your iPhone in the moment, then let go. It's never saved or uploaded. Your library lives on your iPhone, with no account and no ads.</p></div>
-        </div>
-
-        <div class="cta">
-            <a href="https://apps.apple.com/app/id6762299975">Download on the App Store</a>
-        </div>
     </div>
 
+    <main class="wrap" id="how">
+        <section class="benefit">
+            <div class="copy">
+                <h2>Tap Start. Stay present.</h2>
+                <p>One tap before class and your phone goes back in your bag. While the IN CLASS banner shows, Udāna recognizes each song and gathers your teacher's words. Sound is understood on your iPhone in the moment, then let go. Nothing is saved.</p>
+            </div>
+            <div class="phone"><img src="assets/live.webp" width="600" height="1304" loading="lazy" alt="The IN CLASS screen with the class timer and the song that's playing"></div>
+        </section>
+
+        <section class="benefit">
+            <div class="copy">
+                <h2>Your teachers, remembered.</h2>
+                <p>Every teacher you tag gets a page of their own, and Udāna suggests who taught from your history, so tagging takes one tap.</p>
+                <ul>
+                    <li>The songs they love, most played first</li>
+                    <li>The themes and phrases they come back to</li>
+                    <li>Every class you've taken together</li>
+                </ul>
+            </div>
+            <div class="phone"><img src="assets/teacher.webp" width="600" height="1304" loading="lazy" alt="A teacher page showing classes together, hours practised and signature songs"></div>
+        </section>
+
+        <section class="benefit">
+            <div class="copy">
+                <h2>Every song from class.</h2>
+                <p>That song from savasana, found. Every song that carried you through class is gathered in one place, with who played it and when. Open it in Apple Music or Spotify, or save a teacher's songs as a playlist of your own.</p>
+            </div>
+            <div class="phone"><img src="assets/music.webp" width="600" height="1304" loading="lazy" alt="The Music tab listing songs heard in class, most heard first"></div>
+        </section>
+
+        <section class="benefit">
+            <div class="copy">
+                <h2>Share it to your Story.</h2>
+                <p>Turn any class into a card, with a photo from the studio if you like, and share it to your Instagram Story or anywhere else. Send the workout to Strava if that's where your training lives.</p>
+            </div>
+            <div class="phone"><img src="assets/share.webp" width="600" height="1304" loading="lazy" alt="The share screen with a class card showing the playlist, heart rate and the teacher's theme"></div>
+        </section>
+
+        <section class="benefit">
+            <div class="copy">
+                <h2>Find any moment again.</h2>
+                <p>Search by song, teacher, studio, or a line your teacher said. Classes and teachers show up in iPhone Search too.</p>
+            </div>
+            <div class="phone"><img src="assets/search.webp" width="600" height="1304" loading="lazy" alt="Search results for classes, teachers and songs"></div>
+        </section>
+
+        <section class="also" aria-label="More features">
+            <div class="card"><h3>Apple Watch and Siri</h3><p>Start and end class from your wrist, or just ask Siri. Your heart rate joins the class from warm-up to final rest.</p></div>
+            <div class="card"><h3>Widgets and Live Activity</h3><p>The class stays on your Lock Screen while it runs, and your last class and streak live on your Home Screen.</p></div>
+            <div class="card"><h3>Private by design</h3><p>No account, no ads. Class sound is never saved or uploaded, and your library lives on your iPhone.</p></div>
+        </section>
+
+        <section class="pricing" id="pricing">
+            <h2>Free to start.</h2>
+            <p>Udāna is free and includes 3 classes a month. Udāna Pro removes the limit and lets you edit class playlists: $6.99 a month, or $49.99 a year with a 1-week free trial.</p>
+            <p>Every class you've kept stays yours either way.</p>
+        </section>
+
+        <section class="faq" id="faq">
+            <h2>Questions</h2>
+            <details><summary>What kinds of classes does it work with?</summary><p>Any class with music and a teacher: vinyasa, hot yoga, yin, Pilates, barre, spin and HIIT. Udāna is made yoga-first, so class types, poses and themes speak that language.</p></details>
+            <details><summary>Is the sound of my class saved?</summary><p>No. During class, Udāna uses the microphone to recognize each song and gather your teacher's words. Sound is understood on your iPhone in the moment, then let go. It's never saved or uploaded.</p></details>
+            <details><summary>Do I need an Apple Watch?</summary><p>No. Everything works on iPhone alone. With Apple Watch you also get your heart rate through the class and can start and end class from your wrist.</p></details>
+            <details><summary>Do I need an account?</summary><p>No. There's no sign-up and no server holding your classes. Your library lives on your iPhone.</p></details>
+            <details><summary>Can I take my playlists to other apps?</summary><p>Yes. Open any song in Apple Music or Spotify, save a class playlist to either, or send the workout to Strava. Udāna sends only what you choose, straight from your iPhone.</p></details>
+            <details><summary>How do I cancel Udāna Pro?</summary><p>Open Settings on your iPhone, tap your name, then Subscriptions, and choose Udāna Pro. Cancel a free trial at least 24 hours before it ends and you won't be charged.</p></details>
+            <p style="text-align:center;color:var(--muted);margin-top:18px">More answers on the <a href="support.html">support page</a>.</p>
+        </section>
+
+        <section class="final">
+            <h2>Your next class is worth keeping.</h2>
+            <a class="appstore" href="https://apps.apple.com/app/id6762299975" aria-label="Download Udāna on the App Store">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.37 12.6c-.02-2.2 1.8-3.26 1.88-3.31-1.03-1.5-2.62-1.7-3.18-1.73-1.35-.14-2.64.8-3.32.8-.69 0-1.74-.78-2.86-.76-1.47.02-2.83.86-3.59 2.17-1.53 2.65-.39 6.58 1.1 8.73.73 1.05 1.6 2.23 2.73 2.19 1.1-.04 1.51-.71 2.84-.71 1.32 0 1.7.71 2.86.69 1.18-.02 1.93-1.07 2.65-2.13.84-1.22 1.18-2.4 1.2-2.46-.03-.01-2.3-.88-2.31-3.48zM14.2 6.13c.6-.73 1.01-1.75.9-2.76-.87.04-1.92.58-2.54 1.31-.56.65-1.05 1.68-.92 2.67.97.08 1.96-.49 2.56-1.22z"/></svg>
+                <span><small>Download on the</small>App Store</span>
+            </a>
+        </section>
+    </main>
+
     <footer>
-        <a href="privacy-policy.html">Privacy Policy</a>
-        <a href="terms-of-service.html">Terms of Service</a>
-        <a href="support.html">Support</a>
-        <div class="copyright">&copy; 2026 Happenings LLC. All rights reserved.</div>
+        <div class="wrap">
+            <div>
+                <a href="support.html">Support</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-of-service.html">Terms of Use</a>
+            </div>
+            <div>&copy; 2026 Happenings LLC</div>
+        </div>
     </footer>
 </body>
 </html>
